@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+PRE_INSTALLED_APPS = [
     # Admin site
     'django.contrib.admin',
     # An authentication system
@@ -46,6 +46,12 @@ INSTALLED_APPS = [
     # A framework for managing static files
     'django.contrib.staticfiles',
 ]
+
+PROJECT_APPS = [
+    'polls.apps.PollsConfig'
+]
+
+INSTALLED_APPS = PRE_INSTALLED_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
