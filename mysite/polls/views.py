@@ -1,6 +1,6 @@
 # Write views
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 """
 get_object_or_404 either returns an object or raises Http404, passing the
 optional keyword arguments to 'get' method.
@@ -9,32 +9,36 @@ optional keyword arguments to 'filter' method.
 """
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.urls import reverse
+from django.views import generic
 
-from .models import Question
+from .models import Choice, Question
 
 # Create your views here.
 
-# The first argument is necessarily a HttpRequest object
-def index(request):
+# ListView displays a list of objects
+# The default template used by IndexView is <app_name>/<model_name>_list.html
+# It's better to always still explicitly specify the template name
+class IndexView(generic.ListView):
 
-    latest_question_list = get_list_or_404(Question)[:5]
-    context = {
-        'latest_question_list': latest_question_list,
-    }
+    template_name = 'polls/index.html'
+    # Over-ride the default context_object_name 'question_list'
+    context_object_name = 'latest_question_list'
 
-    return render(request, 'polls/index.html', context)
+    def get_queryset(self):
+        return Question.objects.order_by('-pub_date')[:5]
 
-def detail(request, question_id):
+# DetailView expects the primary key captured to be called 'pk'
+# The default template used by DetailView is <app_name>/<model_name>_detail.html
+class DetailView(generic.DetailView):
 
-    question = get_object_or_404(Question, pk=question_id)
+    # Default context_object_name is 'question'
+    model = Question
+    template_name = 'polls/detail.html'
 
-    return render(request, 'polls/detail.html', {'question': question})
+class ResultsView(generic.DetailView):
 
-def results(request, question_id):
-
-    question = get_object_or_404(Question, pk=question_id)
-
-    return render(request, 'polls/results.html', {'question': question})
+    model = Question
+    template_name = 'polls/results.html'
 
 def vote(request, question_id):
 
