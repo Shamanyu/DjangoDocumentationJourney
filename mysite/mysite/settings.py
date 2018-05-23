@@ -1,3 +1,5 @@
+# Settings/configurations for Django project
+
 """
 Django settings for mysite project.
 

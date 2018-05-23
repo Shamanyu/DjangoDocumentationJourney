@@ -1,3 +1,5 @@
+# Table of contents for Django powered site
+
 """mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:

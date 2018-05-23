@@ -1,3 +1,5 @@
+# An entry point for WSGI-compatible web servers
+
 """
 WSGI config for mysite project.
 

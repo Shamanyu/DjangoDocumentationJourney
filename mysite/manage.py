@@ -1,8 +1,11 @@
+# Command line utility that allows a user to interact with Django project in various ways
+
 #!/usr/bin/env python
 import os
 import sys
 
 if __name__ == '__main__':
+    # Set the os environment using the 'settings' module
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
     try:
         from django.core.management import execute_from_command_line
