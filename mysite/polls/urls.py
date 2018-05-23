@@ -6,6 +6,11 @@ from . import views
 allows us to make global changes to the URL patterns of our project while
 only changing a single file
 """
+
+""" Namespacing urls so that they don't clash with urls with the same name in
+another app
+"""
+app_name = 'polls'
 urlpatterns = [
     path('', views.index, name='index'),
     # '<>' helps capture the variable and pass it off as parameter to the view
