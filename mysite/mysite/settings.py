@@ -65,6 +65,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+""" 'APP_DIRS' tells Django to look for 'templates' in all app directories.
+Always namespace your templates inside apps, eg. 'polls/index.html' rather
+than 'index.html', as else Django would use the first template with
+the name 'index.html' it finds in any of the installed apps
+"""
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
