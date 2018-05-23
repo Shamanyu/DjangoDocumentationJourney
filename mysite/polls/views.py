@@ -1,7 +1,13 @@
 # Write views
 
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+"""
+get_object_or_404 either returns an object or raises Http404, passing the
+optional keyword arguments to 'get' method.
+get_list_or_404 either returns a list or raises Http404, passing the
+optional keyword arguments to 'filter' method.
+"""
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 
 from .models import Question
 
@@ -10,7 +16,7 @@ from .models import Question
 # The first argument is necessarily a HttpRequest object
 def index(request):
 
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    latest_question_list = get_list_or_404(Question)[:5]
     context = {
         'latest_question_list': latest_question_list,
     }
