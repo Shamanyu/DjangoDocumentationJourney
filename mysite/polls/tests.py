@@ -9,6 +9,12 @@ from django.urls import reverse
 from .models import Question
 
 # Create your tests here.
+"""
+To ensure that the test cases remain manageable, ensure:
+1) Separate test class for each model or view
+2) Separate test method for each set of conditions to be tested
+3) Test method names that describe their function
+"""
 
 """
 python manage.py test polls creates a special database for testing. It then
