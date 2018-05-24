@@ -10,6 +10,7 @@ optional keyword arguments to 'filter' method.
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.urls import reverse
 from django.views import generic
+from django.utils import timezone
 
 from .models import Choice, Question
 
@@ -25,7 +26,8 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.filter(
+            pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 # DetailView expects the primary key captured to be called 'pk'
 # The default template used by DetailView is <app_name>/<model_name>_detail.html
