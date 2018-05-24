@@ -1,0 +1,12 @@
+/*
+Always use relative path to link style sheets to each other. This way, we can
+change the 'STATIC_URL' without changing a whole bunch of other configuration
+*/
+
+li a {
+  color: green;
+}
+
+body {
+  background: white url("images/blog.jpg") no-repeat;
+}
