@@ -136,4 +136,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
+""" 'STATICFILES_FINDERS' looks for 'static' subdirectory in each app, similar
+to how 'templates' are searched. Hence, it is important to namespace static files,
+just like template files.
+"""
 STATIC_URL = '/static/'
